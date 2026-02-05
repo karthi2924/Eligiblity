@@ -810,11 +810,12 @@
 
                             <!-- COB -->
                             <div class="col-12 form-group-tight">
-                                <label>COORDINATION OF BENEFITS</label>
-                                <p class="subtitle mb-1">COB Status</p>
-                                <i class="helper mt-0 mb-0">
+                                <p style="color: #6c757d;font-size: 12px;">COORDINATION OF BENEFITS</p>
+                                <label class="subtitle">COB Status <span class="text-danger">*</span></label> <br>
+                                <i class="helper" style="font-weight: 600;">
                                     Script: "May I know whether this plan is acting as primary?"
                                 </i>
+                                
                                 <select class="form-select" id="cobStatus">
                                     <option value="primary">Primary</option>
                                     <option value="secondary">Secondary</option>
@@ -824,10 +825,10 @@
 
                             <!-- SECONDARY / TERTIARY DETAILS -->
                             <div id="secondaryDetails" class="col-12 row gx-4 gy-1" style="display:none;">
-
+                            
                                 <div class="col-12 form-group-tight">
                                     <hr class="section-divider my-2">
-                                    <i class="helper mt-0 mb-0">
+                                    <i class="helper" style="font-weight:600;font-size:13px;">
                                         Script: "Since this plan is Secondary, who is updated as Primary? Could you
                                         please provide the other insurance information if available?"
                                     </i>
@@ -849,12 +850,12 @@
                             <div class="col-12 row gx-4 gy-1 align-items-end">
 
                                 <div class="col-md-6 form-group-tight">
-                                    <p style="color: #6c757d;font-size: 12px;">PRIOR AUTH</p>
-                                     <label class="subtitle mb-1">Authorization Required?<br>
-                                    <i class="helper mt-0 mb-0">
+                                    <p style="color: #6c757d;font-size: 14px;font-weight: 450;" class="mb-0">PRIOR AUTH</p>
+                                    <label class="subtitle">Authorization Required?</label><br>
+                                    <i class="helper" style="font-weight: 600;">
                                         Script: "May I know whether authorization is required for the services?"
                                     </i>
-                                    </label>
+                                    
                                     <select class="form-select" id="authRequired">
                                         <option value="required">Required</option>
                                         <option value="not_required">Not required</option>
@@ -880,8 +881,8 @@
                             <div id="authNumberRow" class="col-12 row gx-4 gy-1 align-items-end">
 
                                 <div class="col-md-6 form-group-tight">
-                                    <label>Auth Number <br>
-                                    <i class="helper mt-0 mb-0">
+                                    <label>Auth Number<br>
+                                    <i class="helper">
                                         Script: "May I have the authorization number?"
                                     </i>
                                     </label>
@@ -889,7 +890,7 @@
                                 </div>
 
                                 <div class="col-md-6 form-group-tight">
-                                    <label>Effective *</label>
+                                    <label>Effective <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" placeholder="MM/DD/YYYY">
                                 </div>
 
@@ -924,18 +925,20 @@
                             <div id="faxDetailsSection" class="col-12 row gx-4 gy-1" style="display:none;">
 
                                 <div class="col-md-6 form-group-tight">
-                                    <label>Auth Fax#</label>
-                                    <i class="helper mt-0 mb-0">
+                                    <label>Auth Fax# <br>
+                                    <i class="helper">
                                         Script: "May I know the fax# to send the medical records?"
                                     </i>
+                                    </label>
                                     <input type="text" class="form-control">
                                 </div>
 
                                 <div class="col-md-6 form-group-tight">
-                                    <label>Fax Attention</label>
-                                    <i class="helper mt-0 mb-0">
+                                    <label>Fax Attention <br>
+                                    <i class="helper">
                                         Script: "May I know to whose attention I need to send the documentation?"
                                     </i>
+                                    </label>
                                     <input type="text" class="form-control">
                                 </div>
 
