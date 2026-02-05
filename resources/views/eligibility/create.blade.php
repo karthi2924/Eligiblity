@@ -805,16 +805,16 @@
                     </div>
 
                     <!-- step-7 -->
-                     <div class="step-content mt-1">
-                        <div class="row g-4">
+                    <div class="step-content mt-3">
+                        <div class="row gx-4 gy-1">
 
                             <!-- COB -->
-                            <div class=" form-group-tight">
+                            <div class="col-12 form-group-tight">
                                 <label>COORDINATION OF BENEFITS</label>
-                                <p class="subtitle">COB Status</p>
-                                <i class="helper">
+                                <p class="subtitle mb-1">COB Status</p>
+                                <p class="helper mt-0 mb-0">
                                     Script: "May I know whether this plan is acting as primary?"
-                                </i>
+                                </p>
                                 <select class="form-select" id="cobStatus">
                                     <option value="primary">Primary</option>
                                     <option value="secondary">Secondary</option>
@@ -822,108 +822,120 @@
                                 </select>
                             </div>
 
-                            <div class="col-12">
-                                <hr class="section-divider" />
-                            </div>
-                            
-
                             <!-- SECONDARY / TERTIARY DETAILS -->
-                            <div id="secondaryDetails" class="col-12 row g-4" style="display: none;">
-                                <div class=" form-group-tight">
-                                    <i class="helper">
+                            <div id="secondaryDetails" class="col-12 row gx-4 gy-1" style="display:none;">
 
-                                        Script: "Since this plan is Secondary, who is updated as Primary? Could
-                                        you please provide the other insurance information if available?"
-
-                                    </i>
+                                <div class="col-12 form-group-tight">
+                                    <hr class="section-divider my-2">
+                                    <p class="helper mt-0 mb-0">
+                                        Script: "Since this plan is Secondary, who is updated as Primary? Could you
+                                        please provide the other insurance information if available?"
+                                    </p>
                                 </div>
+
                                 <div class="col-md-6 form-group-tight">
                                     <label>Other Insurance Name</label>
-                                    <input type="text" class="form-control" placeholder="e.g. Medicare" />
+                                    <input type="text" class="form-control" placeholder="e.g. Medicare">
                                 </div>
+
                                 <div class="col-md-6 form-group-tight">
                                     <label>Other Member ID</label>
-                                    <input type="text" class="form-control" placeholder="e.g. #12345" />
+                                    <input type="text" class="form-control" placeholder="e.g. #12345">
                                 </div>
+
                             </div>
 
-                            <!-- Auth Row 1: Authorization Required + Auth Updated -->
-                            <div class="col-12 row g-4 align-items-end">
+                            <!-- PRIOR AUTH -->
+                            <div class="col-12 row gx-4 gy-1 align-items-end">
+
                                 <div class="col-md-6 form-group-tight">
                                     <label>PRIOR AUTH</label>
-                                    <p class="subtitle">Authorization Required?</p>
-                                    <i class="helper">
+                                    <p class="subtitle mb-1">Authorization Required?</p>
+                                    <p class="helper mt-0 mb-0">
                                         Script: "May I know whether authorization is required for the services?"
-                                    </i>
+                                    </p>
                                     <select class="form-select" id="authRequired">
                                         <option value="required">Required</option>
                                         <option value="not_required">Not required</option>
                                     </select>
-                                    <p class="helper" style="color:#9e9d9d;">PDF Rule: Skip Auth Details</p>
+                                    <p class="helper mt-1 mb-0 text-muted">PDF Rule: Skip Auth Details</p>
                                 </div>
 
                                 <div class="col-md-6 form-group-tight" id="authOnFileWrapper">
                                     <label>Auth Updated with Insurance?</label>
-                                    <i class="helper">
+                                    <p class="helper mt-0 mb-0">
                                         Script: "May I know whether authorization is on file for our provider?"
-                                    </i>
+                                    </p>
                                     <select class="form-select" id="authOnFile">
                                         <option value="onfile">On File</option>
                                         <option value="not_on_file">Not a file</option>
                                     </select>
                                 </div>
+
                             </div>
 
-                            <!-- Auth Row 2: Auth Number + Effective -->
-                            <div id="authNumberRow" class="col-12 row g-4 align-items-end">
+                            <!-- AUTH DETAILS -->
+                            <div id="authNumberRow" class="col-12 row gx-4 gy-1 align-items-end">
+
                                 <div class="col-md-6 form-group-tight">
                                     <label>Auth Number</label>
-                                    <i class="helper">Script: "May I have the authorization number?"</i>
-                                    <input type="text" class="form-control" />
+                                    <p class="helper mt-0 mb-0">
+                                        Script: "May I have the authorization number?"
+                                    </p>
+                                    <input type="text" class="form-control">
                                 </div>
+
                                 <div class="col-md-6 form-group-tight">
                                     <label>Effective *</label>
-                                    <input type="text" class="form-control" placeholder="MM/DD/YYYY" />
+                                    <input type="text" class="form-control" placeholder="MM/DD/YYYY">
                                 </div>
+
                             </div>
 
-                            <!-- Auth Row 3: Term + Units Allowed -->
-                            <div id="authTermRow" class="col-12 row g-4 align-items-end">
+                            <div id="authTermRow" class="col-12 row gx-4 gy-1 align-items-end">
+
                                 <div class="col-md-6 form-group-tight">
                                     <label>Term</label>
-                                    <input type="text" class="form-control" placeholder="MM/DD/YYYY" />
+                                    <input type="text" class="form-control" placeholder="MM/DD/YYYY">
                                 </div>
+
                                 <div class="col-md-6 form-group-tight">
                                     <label>Units Allowed</label>
-                                    <input type="text" class="form-control" />
+                                    <input type="text" class="form-control">
                                 </div>
+
                             </div>
 
-                            <!-- Auth Row 4: Units Used -->
-                            <div id="authUnitsRow" class="col-12 row g-4">
+                            <div id="authUnitsRow" class="col-12 row gx-4 gy-1">
+
                                 <div class="col-md-6 form-group-tight">
                                     <label>Units Used</label>
-                                    <input type="text" class="form-control" />
+                                    <input type="text" class="form-control">
                                 </div>
+
                                 <div class="col-md-6"></div>
+
                             </div>
 
-                            <!-- Fax Fields -->
-                            <div id="faxDetailsSection" class="col-12 row g-4" style="display:none;">
+                            <!-- FAX DETAILS -->
+                            <div id="faxDetailsSection" class="col-12 row gx-4 gy-1" style="display:none;">
+
                                 <div class="col-md-6 form-group-tight">
                                     <label>Auth Fax#</label>
-                                    <i class="helper">
+                                    <p class="helper mt-0 mb-0">
                                         Script: "May I know the fax# to send the medical records?"
-                                    </i>
-                                    <input type="text" class="form-control" />
+                                    </p>
+                                    <input type="text" class="form-control">
                                 </div>
+
                                 <div class="col-md-6 form-group-tight">
                                     <label>Fax Attention</label>
-                                    <i class="helper">
+                                    <p class="helper mt-0 mb-0">
                                         Script: "May I know to whose attention I need to send the documentation?"
-                                    </i>
-                                    <input type="text" class="form-control" />
+                                    </p>
+                                    <input type="text" class="form-control">
                                 </div>
+
                             </div>
 
                         </div>
@@ -1196,15 +1208,15 @@
         const authRequired = document.getElementById("authRequired");
         const authOnFile = document.getElementById("authOnFile");
         const authOnFileWrapper = document.getElementById("authOnFileWrapper");
- 
+
         const authNumberRow = document.getElementById("authNumberRow");
         const authTermRow = document.getElementById("authTermRow");
         const authUnitsRow = document.getElementById("authUnitsRow");
         const faxDetailsSection = document.getElementById("faxDetailsSection");
- 
+
         const cobStatus = document.getElementById("cobStatus");
         const secondaryDetails = document.getElementById("secondaryDetails");
- 
+
         function updateAuthUI() {
             if (authRequired.value === "not_required") {
                 // Hide all auth fields
@@ -1215,13 +1227,13 @@
                 faxDetailsSection.style.display = "none";
                 return;
             }
- 
+
             // Auth is required, show fields
             authOnFileWrapper.style.display = "";
             authNumberRow.style.display = "";
             authTermRow.style.display = "";
             authUnitsRow.style.display = "";
- 
+
             if (authOnFile.value === "not_on_file") {
                 faxDetailsSection.style.display = "";
                 authNumberRow.style.display = "none";
@@ -1231,16 +1243,16 @@
                 faxDetailsSection.style.display = "none";
             }
         }
- 
+
         function toggleSecondaryDetails() {
             secondaryDetails.style.display = (cobStatus.value === "secondary" || cobStatus.value === "tertiary") ? "flex" : "none";
         }
- 
+
         // Listeners
         authRequired.addEventListener("change", updateAuthUI);
         authOnFile.addEventListener("change", updateAuthUI);
         cobStatus.addEventListener("change", toggleSecondaryDetails);
- 
+
         // Initial load
         updateAuthUI();
         toggleSecondaryDetails();
