@@ -305,6 +305,12 @@
         margin: 0 0 12px 0;
         border-color: #555555;
     }
+    .main-coordination{
+        background-color: #F2F5FB;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #B6C6FF;
+    }
 </style>
 
 <body>
@@ -807,43 +813,44 @@
                     <!-- step-7 -->
                     <div class="step-content mt-3">
                         <div class="row gx-4 gy-1">
-
-                            <!-- COB -->
-                            <div class="col-12 form-group-tight">
-                                <p style="color: #6c757d;font-size: 12px;">COORDINATION OF BENEFITS</p>
-                                <label class="subtitle">COB Status <span class="text-danger">*</span></label> <br>
-                                <i class="helper" style="font-weight: 600;">
-                                    Script: "May I know whether this plan is acting as primary?"
-                                </i>
-                                
-                                <select class="form-select" id="cobStatus">
-                                    <option value="primary">Primary</option>
-                                    <option value="secondary">Secondary</option>
-                                    <option value="tertiary">Tertiary</option>
-                                </select>
-                            </div>
-
-                            <!-- SECONDARY / TERTIARY DETAILS -->
-                            <div id="secondaryDetails" class="col-12 row gx-4 gy-1" style="display:none;">
-                            
+                            <div class="main-coordination">
+                                <!-- COB -->
                                 <div class="col-12 form-group-tight">
-                                    <hr class="section-divider my-2">
-                                    <i class="helper" style="font-weight:600;font-size:13px;">
-                                        Script: "Since this plan is Secondary, who is updated as Primary? Could you
-                                        please provide the other insurance information if available?"
+                                    <p style="color: #6c757d;font-size: 12px;">COORDINATION OF BENEFITS</p>
+                                    <label class="subtitle">COB Status <span class="text-danger">*</span></label> <br>
+                                    <i class="helper" style="font-weight: 600;">
+                                        Script: "May I know whether this plan is acting as primary?"
                                     </i>
+
+                                    <select class="form-select" id="cobStatus">
+                                        <option value="primary">Primary</option>
+                                        <option value="secondary">Secondary</option>
+                                        <option value="tertiary">Tertiary</option>
+                                    </select>
                                 </div>
 
-                                <div class="col-md-6 form-group-tight">
-                                    <label>Other Insurance Name</label>
-                                    <input type="text" class="form-control" placeholder="e.g. Medicare">
-                                </div>
+                                <!-- SECONDARY / TERTIARY DETAILS -->
+                                <div id="secondaryDetails" class="col-12 row gx-4 gy-1" style="display:none;">
 
-                                <div class="col-md-6 form-group-tight">
-                                    <label>Other Member ID</label>
-                                    <input type="text" class="form-control" placeholder="e.g. #12345">
-                                </div>
+                                    <div class="col-12 form-group-tight">
+                                        <hr class="section-divider my-2">
+                                        <i class="helper" style="font-weight:600;font-size:13px;">
+                                            Script: "Since this plan is Secondary, who is updated as Primary? Could you
+                                            please provide the other insurance information if available?"
+                                        </i>
+                                    </div>
 
+                                    <div class="col-md-6 form-group-tight">
+                                        <label>Other Insurance Name</label>
+                                        <input type="text" class="form-control" placeholder="e.g. Medicare">
+                                    </div>
+
+                                    <div class="col-md-6 form-group-tight">
+                                        <label>Other Member ID</label>
+                                        <input type="text" class="form-control" placeholder="e.g. #12345">
+                                    </div>
+
+                                </div>
                             </div>
 
                             <!-- PRIOR AUTH -->
@@ -855,7 +862,7 @@
                                     <i class="helper" style="font-weight: 600;">
                                         Script: "May I know whether authorization is required for the services?"
                                     </i>
-                                    
+
                                     <select class="form-select" id="authRequired">
                                         <option value="required">Required</option>
                                         <option value="not_required">Not required</option>
@@ -865,9 +872,9 @@
 
                                 <div class="col-md-6 form-group-tight" id="authOnFileWrapper">
                                     <label>Auth Updated with Insurance? <br>
-                                    <i class="helper mt-0 mb-0">
-                                        Script: "May I know whether authorization is on file for our provider?"
-                                    </i>
+                                        <i class="helper mt-0 mb-0">
+                                            Script: "May I know whether authorization is on file for our provider?"
+                                        </i>
                                     </label>
                                     <select class="form-select" id="authOnFile">
                                         <option value="onfile">On File</option>
@@ -882,9 +889,9 @@
 
                                 <div class="col-md-6 form-group-tight">
                                     <label>Auth Number<br>
-                                    <i class="helper">
-                                        Script: "May I have the authorization number?"
-                                    </i>
+                                        <i class="helper">
+                                            Script: "May I have the authorization number?"
+                                        </i>
                                     </label>
                                     <input type="text" class="form-control">
                                 </div>
@@ -926,18 +933,18 @@
 
                                 <div class="col-md-6 form-group-tight">
                                     <label>Auth Fax# <br>
-                                    <i class="helper">
-                                        Script: "May I know the fax# to send the medical records?"
-                                    </i>
+                                        <i class="helper">
+                                            Script: "May I know the fax# to send the medical records?"
+                                        </i>
                                     </label>
                                     <input type="text" class="form-control">
                                 </div>
 
                                 <div class="col-md-6 form-group-tight">
                                     <label>Fax Attention <br>
-                                    <i class="helper">
-                                        Script: "May I know to whose attention I need to send the documentation?"
-                                    </i>
+                                        <i class="helper">
+                                            Script: "May I know to whose attention I need to send the documentation?"
+                                        </i>
                                     </label>
                                     <input type="text" class="form-control">
                                 </div>
