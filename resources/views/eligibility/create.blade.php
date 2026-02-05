@@ -812,9 +812,9 @@
                             <div class="col-12 form-group-tight">
                                 <label>COORDINATION OF BENEFITS</label>
                                 <p class="subtitle mb-1">COB Status</p>
-                                <p class="helper mt-0 mb-0">
+                                <i class="helper mt-0 mb-0">
                                     Script: "May I know whether this plan is acting as primary?"
-                                </p>
+                                </i>
                                 <select class="form-select" id="cobStatus">
                                     <option value="primary">Primary</option>
                                     <option value="secondary">Secondary</option>
@@ -827,10 +827,10 @@
 
                                 <div class="col-12 form-group-tight">
                                     <hr class="section-divider my-2">
-                                    <p class="helper mt-0 mb-0">
+                                    <i class="helper mt-0 mb-0">
                                         Script: "Since this plan is Secondary, who is updated as Primary? Could you
                                         please provide the other insurance information if available?"
-                                    </p>
+                                    </i>
                                 </div>
 
                                 <div class="col-md-6 form-group-tight">
@@ -849,11 +849,12 @@
                             <div class="col-12 row gx-4 gy-1 align-items-end">
 
                                 <div class="col-md-6 form-group-tight">
-                                    <label>PRIOR AUTH</label>
-                                    <p class="subtitle mb-1">Authorization Required?</p>
-                                    <p class="helper mt-0 mb-0">
+                                    <p style="color: #6c757d;font-size: 12px;">PRIOR AUTH</p>
+                                     <label class="subtitle mb-1">Authorization Required?<br>
+                                    <i class="helper mt-0 mb-0">
                                         Script: "May I know whether authorization is required for the services?"
-                                    </p>
+                                    </i>
+                                    </label>
                                     <select class="form-select" id="authRequired">
                                         <option value="required">Required</option>
                                         <option value="not_required">Not required</option>
@@ -862,10 +863,11 @@
                                 </div>
 
                                 <div class="col-md-6 form-group-tight" id="authOnFileWrapper">
-                                    <label>Auth Updated with Insurance?</label>
-                                    <p class="helper mt-0 mb-0">
+                                    <label>Auth Updated with Insurance? <br>
+                                    <i class="helper mt-0 mb-0">
                                         Script: "May I know whether authorization is on file for our provider?"
-                                    </p>
+                                    </i>
+                                    </label>
                                     <select class="form-select" id="authOnFile">
                                         <option value="onfile">On File</option>
                                         <option value="not_on_file">Not a file</option>
@@ -878,10 +880,11 @@
                             <div id="authNumberRow" class="col-12 row gx-4 gy-1 align-items-end">
 
                                 <div class="col-md-6 form-group-tight">
-                                    <label>Auth Number</label>
-                                    <p class="helper mt-0 mb-0">
+                                    <label>Auth Number <br>
+                                    <i class="helper mt-0 mb-0">
                                         Script: "May I have the authorization number?"
-                                    </p>
+                                    </i>
+                                    </label>
                                     <input type="text" class="form-control">
                                 </div>
 
@@ -922,17 +925,17 @@
 
                                 <div class="col-md-6 form-group-tight">
                                     <label>Auth Fax#</label>
-                                    <p class="helper mt-0 mb-0">
+                                    <i class="helper mt-0 mb-0">
                                         Script: "May I know the fax# to send the medical records?"
-                                    </p>
+                                    </i>
                                     <input type="text" class="form-control">
                                 </div>
 
                                 <div class="col-md-6 form-group-tight">
                                     <label>Fax Attention</label>
-                                    <p class="helper mt-0 mb-0">
+                                    <i class="helper mt-0 mb-0">
                                         Script: "May I know to whose attention I need to send the documentation?"
-                                    </p>
+                                    </i>
                                     <input type="text" class="form-control">
                                 </div>
 
