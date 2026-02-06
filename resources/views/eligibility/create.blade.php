@@ -7,7 +7,9 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <style>
@@ -305,7 +307,8 @@
         margin: 0 0 12px 0;
         border-color: #555555;
     }
-    .main-coordination{
+
+    .main-coordination {
         background-color: #F2F5FB;
         padding: 12px;
         border-radius: 8px;
@@ -446,13 +449,17 @@
                         </div>
 
                         <div class="mode-script" id="RTE" style="display: none;">
-                            <i class="mode-para2"><span class="mode-para1" style="color: purple;font-weight: bold;">RTE Selected:</span> Proceed directly to the closing step to update manual fields (Policy Name, CC, Action, etc.). Detailed verification steps will be skipped.</i>
+                            <i class="mode-para2"><span class="mode-para1" style="color: purple;font-weight: bold;">RTE
+                                    Selected:</span> Proceed directly to the closing step to update manual fields
+                                (Policy Name, CC, Action, etc.). Detailed verification steps will be skipped.</i>
                         </div>
 
                         <div class="mode-script" id="Call" style="display: none;">
 
                             <i class="mode-para1">Opening Script:</i><br>
-                            <i class="mode-para2" style="color: darkblue;font-weight: 400;">"Hello, my name is [Your Name], and I am calling from the provider's office. I would like to verify the eligibility and benefits for our patients. Could you assist me with this, please?"</i>
+                            <i class="mode-para2" style="color: darkblue;font-weight: 400;">"Hello, my name is [Your
+                                Name], and I am calling from the provider's office. I would like to verify the
+                                eligibility and benefits for our patients. Could you assist me with this, please?"</i>
 
                             <div class="row">
                                 <div class="col">
@@ -462,7 +469,8 @@
 
                                 <div class="col">
                                     <label for="">Rep Name <span class="text-danger">*</span></label><br>
-                                    <i class="mode-para2">Script: "Sorry, I didn’t get your name. Could you please spell it out for my documentation?"</i>
+                                    <i class="mode-para2">Script: "Sorry, I didn’t get your name. Could you please spell
+                                        it out for my documentation?"</i>
                                     <input type="text" class="form-control ">
                                 </div>
                             </div>
@@ -478,7 +486,8 @@
                     <!-- STEP 3 -->
                     <div class="step-content">
                         <p class="status mb-1">ELIGIBILITY STATUS</p>
-                        <i class="status-msg">Script: "Could you confirm the member’s eligibility before moving on to the benefits?"</i>
+                        <i class="status-msg">Script: "Could you confirm the member’s eligibility before moving on to
+                            the benefits?"</i>
                         <div class="status-update mt-4">
                             <div>
                                 <p class="mb-1">Policy Status</p>
@@ -495,13 +504,15 @@
                         <div class="row mt-4">
                             <div class="col">
                                 <label>Policy Effective Date <span class="text-danger">*</span><br>
-                                    <i class="policy-effective">Script: "May I have the patient policy effective date?"</i>
+                                    <i class="policy-effective">Script: "May I have the patient policy effective
+                                        date?"</i>
                                 </label>
                                 <input type="text" class="form-control" placeholder="MM/DD/YYYY">
                             </div>
                             <div class="col">
                                 <label>Policy Term Date <span class="text-danger">*</span><br>
-                                    <i class="policy-term">Script: "Could you confirm if there is a future termination date for the plan?"</i>
+                                    <i class="policy-term">Script: "Could you confirm if there is a future termination
+                                        date for the plan?"</i>
                                 </label>
                                 <input type="text" class="form-control" placeholder="MM/DD/YYYY">
                             </div>
@@ -510,7 +521,8 @@
                         <div class="row mt-3 mb-3">
                             <div>
                                 <label>Type of Plan<br>
-                                    <i class="type-of-plan">Script: "May I know what type of plan does the patient have?"</i>
+                                    <i class="type-of-plan">Script: "May I know what type of plan does the patient
+                                        have?"</i>
                                 </label>
                                 <select name="type_of_plan-select" class="form-select">
                                     <option value="" disabled selected>Select Type of Plan</option>
@@ -539,14 +551,17 @@
                         <div class="participation-box">
                             <p style="color: #6c757d;font-size: 14px;">PROVIDER PARTICIPATION</p>
                             <label>Participation Status <span class="text-danger">*</span><br>
-                                <i class="participation-status">Script: "May I know whether our provider is In network or Out of network with the patient plan?"</i>
+                                <i class="participation-status">Script: "May I know whether our provider is In network
+                                    or Out of network with the patient plan?"</i>
                             </label>
-                            <select name="participation-status-select" class="form-select mt-2 mb-1" id="participation-selection" onchange="participationFunction()">
+                            <select name="participation-status-select" class="form-select mt-2 mb-1"
+                                id="participation-selection" onchange="participationFunction()">
                                 <option value="In Network">In Network</option>
                                 <option value="Out of Network">Out of Network</option>
                                 <option value="Other">Other</option>
                             </select>
-                            <p style="color: #6c757d;font-size: 12px;">BCBS Script: "May I know whether our provider would be considered as In-network provider if they are par with the local?"</p>
+                            <p style="color: #6c757d;font-size: 12px;">BCBS Script: "May I know whether our provider
+                                would be considered as In-network provider if they are par with the local?"</p>
                         </div>
 
                         <div class="row mt-5">
@@ -556,14 +571,17 @@
                             </div>
                             <div class="col" id="Out of Network" style="display: none;">
                                 <label>Has OON Coverage? <br>
-                                    <i class="OON-Coverage">Script: "May I know whether the patient has Out of network coverage for the services?"</i>
+                                    <i class="OON-Coverage">Script: "May I know whether the patient has Out of network
+                                        coverage for the services?"</i>
                                 </label>
-                                <select name="OON-Coverage-select" class="form-select mt-2 mb-0" id="coverage-selection" onchange="coverageFunction()">
+                                <select name="OON-Coverage-select" class="form-select mt-2 mb-0" id="coverage-selection"
+                                    onchange="coverageFunction()">
                                     <option value="" disabled selected>Select coverage</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
                                 </select>
-                                <p style="font-size:12px;color:red;display:none;" id="No">Action: Proceed to Closing.</p>
+                                <p style="font-size:12px;color:red;display:none;" id="No">Action: Proceed to Closing.
+                                </p>
                             </div>
                         </div>
 
@@ -595,7 +613,8 @@
                                     <option value="other">Other</option>
                                 </select>
                             </div>
-                            <div class="col-12 form-group-tight" id="otherCPTContainer" style="display: none; margin-top: 12px;">
+                            <div class="col-12 form-group-tight" id="otherCPTContainer"
+                                style="display: none; margin-top: 12px;">
                             </div>
 
 
@@ -699,15 +718,16 @@
                         <div class="mb-3">
                             <label>Referral Required? <span class="text-danger">*</span><br>
                                 <i class="referral-script">
-                                    Script: "May I know whether referral is required for the services to meet a specialist from the PCP?"
+                                    Script: "May I know whether referral is required for the services to meet a
+                                    specialist from the PCP?"
                                 </i>
                             </label>
                             <select class="form-select" id="referral-selection" onchange="referralFunction()">
                                 <option>Required</option>
                                 <option>Not Required</option>
                             </select>
-                            <p id="not_required_ReferralMsg"
-                                style="font-size:12px;color:#6c757d;display:none;" class="mt-1">
+                            <p id="not_required_ReferralMsg" style="font-size:12px;color:#6c757d;display:none;"
+                                class="mt-1">
                                 PDF Rule: Skip Referral Details.
                             </p>
                         </div>
@@ -830,12 +850,19 @@
                                 </div>
 
                                 <!-- SECONDARY / TERTIARY DETAILS -->
+                                <!-- SECONDARY / TERTIARY DETAILS -->
                                 <div id="secondaryDetails" class="col-12 row gx-4 gy-1" style="display:none;">
 
                                     <div class="col-12 form-group-tight">
                                         <hr class="section-divider my-2">
-                                        <i class="helper" style="font-weight:600;font-size:13px;">
+
+                                        <i id="secondaryScript" class="helper" style="display:none;">
                                             Script: "Since this plan is Secondary, who is updated as Primary? Could you
+                                            please provide the other insurance information if available?"
+                                        </i>
+
+                                        <i id="tertiaryScript" class="helper" style="display:none;">
+                                            Script: "Since this plan is Tertiary, who is updated as Primary? Could you
                                             please provide the other insurance information if available?"
                                         </i>
                                     </div>
@@ -851,13 +878,15 @@
                                     </div>
 
                                 </div>
+
                             </div>
 
                             <!-- PRIOR AUTH -->
                             <div class="col-12 row gx-4 gy-1 align-items-end">
 
                                 <div class="col-md-6 form-group-tight">
-                                    <p style="color: #6c757d;font-size: 14px;font-weight: 450;" class="mb-0">PRIOR AUTH</p>
+                                    <p style="color: #6c757d;font-size: 14px;font-weight: 450;" class="mb-0">PRIOR AUTH
+                                    </p>
                                     <label class="subtitle">Authorization Required?</label><br>
                                     <i class="helper" style="font-weight: 600;">
                                         Script: "May I know whether authorization is required for the services?"
@@ -980,7 +1009,8 @@
                                         <option value="Calling-Referral">Calling-Referral</option>
                                         <option value="Klara">Klara</option>
                                     </select>
-                                    <p style="color: #6c757d;font-size: 12px;">Select the outcome of your verification (Call/Web/RTE).</p>
+                                    <p style="color: #6c757d;font-size: 12px;">Select the outcome of your verification
+                                        (Call/Web/RTE).</p>
                                 </div>
                                 <div class="col">
                                     <label>Policy Name / Plan Type</label>
@@ -1055,7 +1085,8 @@
                         </div>
 
                         <div class="mt-3 d-flex justify-content-center mb-4">
-                            <i style="color: #6c757d;font-size: 14px;">Closing Script: "Thank you for your assistance and have a wonderful day/Happy weekend."</i>
+                            <i style="color: #6c757d;font-size: 14px;">Closing Script: "Thank you for your assistance
+                                and have a wonderful day/Happy weekend."</i>
                         </div>
 
                         <hr style="color:#b9b7b7;">
@@ -1163,7 +1194,7 @@
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const modeSelect = document.getElementById("modeSelect");
             const dynamicInput = document.getElementById("dynamicInput");
             const outOfStateSection = document.getElementById("outOfStateSection");
@@ -1217,59 +1248,79 @@
         });
     </script>
 
-    <script>
-        const authRequired = document.getElementById("authRequired");
-        const authOnFile = document.getElementById("authOnFile");
-        const authOnFileWrapper = document.getElementById("authOnFileWrapper");
+ <script>
+document.addEventListener("DOMContentLoaded", function () {
 
-        const authNumberRow = document.getElementById("authNumberRow");
-        const authTermRow = document.getElementById("authTermRow");
-        const authUnitsRow = document.getElementById("authUnitsRow");
-        const faxDetailsSection = document.getElementById("faxDetailsSection");
+    const authRequired = document.getElementById("authRequired");
+    const authOnFile = document.getElementById("authOnFile");
+    const authOnFileWrapper = document.getElementById("authOnFileWrapper");
 
-        const cobStatus = document.getElementById("cobStatus");
-        const secondaryDetails = document.getElementById("secondaryDetails");
+    const authNumberRow = document.getElementById("authNumberRow");
+    const authTermRow = document.getElementById("authTermRow");
+    const authUnitsRow = document.getElementById("authUnitsRow");
+    const faxDetailsSection = document.getElementById("faxDetailsSection");
 
-        function updateAuthUI() {
-            if (authRequired.value === "not_required") {
-                // Hide all auth fields
-                authOnFileWrapper.style.display = "none";
-                authNumberRow.style.display = "none";
-                authTermRow.style.display = "none";
-                authUnitsRow.style.display = "none";
-                faxDetailsSection.style.display = "none";
-                return;
-            }
+    const cobStatus = document.getElementById("cobStatus");
+    const secondaryDetails = document.getElementById("secondaryDetails");
 
-            // Auth is required, show fields
-            authOnFileWrapper.style.display = "";
-            authNumberRow.style.display = "";
-            authTermRow.style.display = "";
-            authUnitsRow.style.display = "";
+    const secondaryScript = document.getElementById("secondaryScript");
+    const tertiaryScript = document.getElementById("tertiaryScript");
 
-            if (authOnFile.value === "not_on_file") {
-                faxDetailsSection.style.display = "";
-                authNumberRow.style.display = "none";
-                authTermRow.style.display = "none";
-                authUnitsRow.style.display = "none";
-            } else {
-                faxDetailsSection.style.display = "none";
-            }
+    function updateAuthUI() {
+        if (authRequired.value === "not_required") {
+            authOnFileWrapper.style.display = "none";
+            authNumberRow.style.display = "none";
+            authTermRow.style.display = "none";
+            authUnitsRow.style.display = "none";
+            faxDetailsSection.style.display = "none";
+            return;
         }
 
-        function toggleSecondaryDetails() {
-            secondaryDetails.style.display = (cobStatus.value === "secondary" || cobStatus.value === "tertiary") ? "flex" : "none";
+        authOnFileWrapper.style.display = "";
+        authNumberRow.style.display = "";
+        authTermRow.style.display = "";
+        authUnitsRow.style.display = "";
+
+        if (authOnFile.value === "not_on_file") {
+            faxDetailsSection.style.display = "";
+            authNumberRow.style.display = "none";
+            authTermRow.style.display = "none";
+            authUnitsRow.style.display = "none";
+        } else {
+            faxDetailsSection.style.display = "none";
+        }
+    }
+
+    function toggleSecondaryDetails() {
+        const value = cobStatus.value;
+
+        // hide everything first
+        secondaryDetails.style.display = "none";
+        secondaryScript.style.display = "none";
+        tertiaryScript.style.display = "none";
+
+        if (value === "secondary") {
+            secondaryDetails.style.display = "flex";
+            secondaryScript.style.display = "block";
         }
 
-        // Listeners
-        authRequired.addEventListener("change", updateAuthUI);
-        authOnFile.addEventListener("change", updateAuthUI);
-        cobStatus.addEventListener("change", toggleSecondaryDetails);
+        if (value === "tertiary") {
+            secondaryDetails.style.display = "flex";
+            tertiaryScript.style.display = "block";
+        }
+    }
 
-        // Initial load
-        updateAuthUI();
-        toggleSecondaryDetails();
-    </script>
+    // listeners
+    authRequired.addEventListener("change", updateAuthUI);
+    authOnFile.addEventListener("change", updateAuthUI);
+    cobStatus.addEventListener("change", toggleSecondaryDetails);
+
+    // initial load
+    updateAuthUI();
+    toggleSecondaryDetails();
+});
+</script>
+
 
 </body>
 
