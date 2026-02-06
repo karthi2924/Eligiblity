@@ -7,8 +7,11 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <style>
     * {
@@ -18,62 +21,92 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    /* =========================
+   SIDEBAR ONLY
+========================= */
+
     .side-bars {
         background-color: #230083;
-        color: white;
+        color: #ffffff;
         height: 100vh;
         width: 250px;
         position: fixed;
+        box-shadow: 4px 0 12px rgba(0, 0, 0, 0.12);
     }
 
     .title {
-        border-bottom: 1px solid #e9e8eb;
-        line-height: 10px;
-        padding-top: 30px;
-        padding-left: 20px;
-        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 20px 20px 16px;
     }
 
+    .title p:first-child {
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        margin-bottom: 4px;
+    }
 
+    .title p:last-child {
+        font-size: 12px;
+        opacity: 0.85;
+    }
+
+    .btns {
+        margin-top: 24px;
+    }
 
     .btns a {
         width: 210px;
-        color: white;
+        color: #ffffff;
         border: none;
-        display: block;
-        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 14px;
         text-align: left;
         text-decoration: none;
-        border-radius: 8px;
+        border-radius: 10px;
         margin-left: 10px;
+        font-size: 14px;
+        transition: all 0.25s ease;
+    }
+
+    .btns a i {
+        opacity: 0.9;
+        font-size: 16px;
     }
 
     .btns a:hover {
-        background-color: rgba(139, 109, 221, 0.15);
-        color: white;
+        background-color: rgba(139, 109, 221, 0.18);
+    }
 
+    .btns a.active {
+        background-color: rgba(139, 109, 221, 0.35);
+        font-weight: 600;
+        box-shadow: inset 3px 0px 0px #ffffff; 
     }
 
     .bottom-btn {
         position: absolute;
-        bottom: 0px;
+        bottom: 0;
         width: 250px;
-        background-color: rgba(139, 109, 221, 0.15);
-        padding: 10px;
+        background-color: rgba(139, 109, 221, 0.18);
+        padding: 14px;
     }
 
     .bottom-btn a {
-        color: white;
+        color: #ffffff;
         text-decoration: none;
         font-size: 14px;
+        display: flex;
+        align-items: center;
     }
 
     .bottom-btn a i {
-        vertical-align: middle;
         font-size: 20px;
-        height: 22px;
-        margin-right: 5px;
+        margin-right: 6px;
     }
+
 
     .vertical-section {
         display: flex;
@@ -113,7 +146,7 @@
         padding: 20px;
         width: 800px;
         border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1);
     }
 
     .hero-section form label {
@@ -305,16 +338,50 @@
         margin: 0 0 12px 0;
         border-color: #555555;
     }
-    .main-coordination{
+
+    .main-coordination {
         background-color: #F2F5FB;
         padding: 12px;
         border-radius: 8px;
         border: 1px solid #B6C6FF;
     }
+
+    /* dashboard */
+    .dashboard {
+        background-color: white;
+        box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1);
+        width: 900px;
+        height: max-content;
+        border-radius: 8px;
+        margin-top: 152px;
+        margin-left: 450px;
+    }
+
+    .records div {
+        background-color: #cae9ff;
+        color: darkblue;
+        font-weight: 600;
+        gap: 15px;
+        padding: 10px 20px;
+        border-radius: 8px;
+    }
+
+    .table th,
+    small {
+        color: #919090f5;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: sans-serif;
+    }
+
+    .btns a.active {
+        background-color: rgba(139, 109, 221, 0.35);
+        font-weight: 600;
+    }
 </style>
 
 <body>
-    <div class="vertical-section">
+    <div class="vertical-section" style="background-color: rgb(252, 252, 252); height: 100vh;">
         <div class="side-bars">
             <div class="title">
                 <p style="font-size: 20px; font-weight: bold;">Pre-registration Verify</p>
@@ -322,11 +389,15 @@
             </div>
             <span></span>
             <div class="btns">
-                <a href="#" class="mt-4">
+                <a href="#" class="mt-4" onclick="showNewVerification()">
                     <i class='far fa-file-alt' style="margin-right: 12px;"></i>
                     New Verification
                 </a>
-                <a href="#" class="mt-3"><i class='fas fa-clinic-medical' style="margin-right: 12px;"></i> Dashboard</a>
+
+                <a href="#" class="mt-3" onclick="showDashboard()">
+                    <i class='fas fa-clinic-medical' style="margin-right: 12px;"></i>
+                    Dashboard
+                </a>
             </div>
             <div class="bottom-btn">
                 <a href=""><i class="material-icons">lock_outline</i> HIPAA Compliant Mode</a>
@@ -336,7 +407,7 @@
         <div class="top-bar" style="margin-left: 250px;">
 
             <div class="d-flex justify-content-between align-items-center">
-                <p>New Verification Entry</p>
+                <p id="topBarTitle">New Verification Entry</p>
                 <div class="d-flex gap-3 align-items-center">
                     <p class="topbar-para">US</p>
                     <div class="d-block session-status">
@@ -348,7 +419,7 @@
         </div>
 
 
-        <div class="p-3 mt-5" style="margin-left:500px;">
+        <div id="newVerificationSection" class="p-3 mt-5" style="margin-left:500px;">
             <div class="hero-section container mt-5">
                 <form id="wizardForm">
                     <h4 class="mb-0">Eligibility & Benefits Verification</h4>
@@ -446,13 +517,17 @@
                         </div>
 
                         <div class="mode-script" id="RTE" style="display: none;">
-                            <i class="mode-para2"><span class="mode-para1" style="color: purple;font-weight: bold;">RTE Selected:</span> Proceed directly to the closing step to update manual fields (Policy Name, CC, Action, etc.). Detailed verification steps will be skipped.</i>
+                            <i class="mode-para2"><span class="mode-para1" style="color: purple;font-weight: bold;">RTE
+                                    Selected:</span> Proceed directly to the closing step to update manual fields
+                                (Policy Name, CC, Action, etc.). Detailed verification steps will be skipped.</i>
                         </div>
 
                         <div class="mode-script" id="Call" style="display: none;">
 
                             <i class="mode-para1">Opening Script:</i><br>
-                            <i class="mode-para2" style="color: darkblue;font-weight: 400;">"Hello, my name is [Your Name], and I am calling from the provider's office. I would like to verify the eligibility and benefits for our patients. Could you assist me with this, please?"</i>
+                            <i class="mode-para2" style="color: darkblue;font-weight: 400;">"Hello, my name is [Your
+                                Name], and I am calling from the provider's office. I would like to verify the
+                                eligibility and benefits for our patients. Could you assist me with this, please?"</i>
 
                             <div class="row">
                                 <div class="col">
@@ -462,7 +537,8 @@
 
                                 <div class="col">
                                     <label for="">Rep Name <span class="text-danger">*</span></label><br>
-                                    <i class="mode-para2">Script: "Sorry, I didn’t get your name. Could you please spell it out for my documentation?"</i>
+                                    <i class="mode-para2">Script: "Sorry, I didn’t get your name. Could you please spell
+                                        it out for my documentation?"</i>
                                     <input type="text" class="form-control ">
                                 </div>
                             </div>
@@ -478,7 +554,8 @@
                     <!-- STEP 3 -->
                     <div class="step-content">
                         <p class="status mb-1">ELIGIBILITY STATUS</p>
-                        <i class="status-msg">Script: "Could you confirm the member’s eligibility before moving on to the benefits?"</i>
+                        <i class="status-msg">Script: "Could you confirm the member’s eligibility before moving on to
+                            the benefits?"</i>
                         <div class="status-update mt-4">
                             <div>
                                 <p class="mb-1">Policy Status</p>
@@ -495,13 +572,15 @@
                         <div class="row mt-4">
                             <div class="col">
                                 <label>Policy Effective Date <span class="text-danger">*</span><br>
-                                    <i class="policy-effective">Script: "May I have the patient policy effective date?"</i>
+                                    <i class="policy-effective">Script: "May I have the patient policy effective
+                                        date?"</i>
                                 </label>
                                 <input type="text" class="form-control" placeholder="MM/DD/YYYY">
                             </div>
                             <div class="col">
                                 <label>Policy Term Date <span class="text-danger">*</span><br>
-                                    <i class="policy-term">Script: "Could you confirm if there is a future termination date for the plan?"</i>
+                                    <i class="policy-term">Script: "Could you confirm if there is a future termination
+                                        date for the plan?"</i>
                                 </label>
                                 <input type="text" class="form-control" placeholder="MM/DD/YYYY">
                             </div>
@@ -510,7 +589,8 @@
                         <div class="row mt-3 mb-3">
                             <div>
                                 <label>Type of Plan<br>
-                                    <i class="type-of-plan">Script: "May I know what type of plan does the patient have?"</i>
+                                    <i class="type-of-plan">Script: "May I know what type of plan does the patient
+                                        have?"</i>
                                 </label>
                                 <select name="type_of_plan-select" class="form-select">
                                     <option value="" disabled selected>Select Type of Plan</option>
@@ -539,14 +619,17 @@
                         <div class="participation-box">
                             <p style="color: #6c757d;font-size: 14px;">PROVIDER PARTICIPATION</p>
                             <label>Participation Status <span class="text-danger">*</span><br>
-                                <i class="participation-status">Script: "May I know whether our provider is In network or Out of network with the patient plan?"</i>
+                                <i class="participation-status">Script: "May I know whether our provider is In network
+                                    or Out of network with the patient plan?"</i>
                             </label>
-                            <select name="participation-status-select" class="form-select mt-2 mb-1" id="participation-selection" onchange="participationFunction()">
+                            <select name="participation-status-select" class="form-select mt-2 mb-1"
+                                id="participation-selection" onchange="participationFunction()">
                                 <option value="In Network">In Network</option>
                                 <option value="Out of Network">Out of Network</option>
                                 <option value="Other">Other</option>
                             </select>
-                            <p style="color: #6c757d;font-size: 12px;">BCBS Script: "May I know whether our provider would be considered as In-network provider if they are par with the local?"</p>
+                            <p style="color: #6c757d;font-size: 12px;">BCBS Script: "May I know whether our provider
+                                would be considered as In-network provider if they are par with the local?"</p>
                         </div>
 
                         <div class="row mt-5">
@@ -556,14 +639,17 @@
                             </div>
                             <div class="col" id="Out of Network" style="display: none;">
                                 <label>Has OON Coverage? <br>
-                                    <i class="OON-Coverage">Script: "May I know whether the patient has Out of network coverage for the services?"</i>
+                                    <i class="OON-Coverage">Script: "May I know whether the patient has Out of network
+                                        coverage for the services?"</i>
                                 </label>
-                                <select name="OON-Coverage-select" class="form-select mt-2 mb-0" id="coverage-selection" onchange="coverageFunction()">
+                                <select name="OON-Coverage-select" class="form-select mt-2 mb-0" id="coverage-selection"
+                                    onchange="coverageFunction()">
                                     <option value="" disabled selected>Select coverage</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
                                 </select>
-                                <p style="font-size:12px;color:red;display:none;" id="No">Action: Proceed to Closing.</p>
+                                <p style="font-size:12px;color:red;display:none;" id="No">Action: Proceed to Closing.
+                                </p>
                             </div>
                         </div>
 
@@ -595,7 +681,8 @@
                                     <option value="other">Other</option>
                                 </select>
                             </div>
-                            <div class="col-12 form-group-tight" id="otherCPTContainer" style="display: none; margin-top: 12px;">
+                            <div class="col-12 form-group-tight" id="otherCPTContainer"
+                                style="display: none; margin-top: 12px;">
                             </div>
 
 
@@ -699,15 +786,16 @@
                         <div class="mb-3">
                             <label>Referral Required? <span class="text-danger">*</span><br>
                                 <i class="referral-script">
-                                    Script: "May I know whether referral is required for the services to meet a specialist from the PCP?"
+                                    Script: "May I know whether referral is required for the services to meet a
+                                    specialist from the PCP?"
                                 </i>
                             </label>
                             <select class="form-select" id="referral-selection" onchange="referralFunction()">
                                 <option>Required</option>
                                 <option>Not Required</option>
                             </select>
-                            <p id="not_required_ReferralMsg"
-                                style="font-size:12px;color:#6c757d;display:none;" class="mt-1">
+                            <p id="not_required_ReferralMsg" style="font-size:12px;color:#6c757d;display:none;"
+                                class="mt-1">
                                 PDF Rule: Skip Referral Details.
                             </p>
                         </div>
@@ -857,7 +945,8 @@
                             <div class="col-12 row gx-4 gy-1 align-items-end">
 
                                 <div class="col-md-6 form-group-tight">
-                                    <p style="color: #6c757d;font-size: 14px;font-weight: 450;" class="mb-0">PRIOR AUTH</p>
+                                    <p style="color: #6c757d;font-size: 14px;font-weight: 450;" class="mb-0">PRIOR AUTH
+                                    </p>
                                     <label class="subtitle">Authorization Required?</label><br>
                                     <i class="helper" style="font-weight: 600;">
                                         Script: "May I know whether authorization is required for the services?"
@@ -955,8 +1044,8 @@
 
                         <!-- NAVIGATION -->
                         <div class="d-flex justify-content-between mt-4">
-                            <button type="button" class="btn btn-light prev-step">Back</button>
-                            <button type="submit" class="btn btn-custom px-4">Submit</button>
+                            <button type="button" class="btn btn-light prev-step px-4">Back</button>
+                            <button type="button" class="btn btn-custom px-4 next-step">Next</button>
                         </div>
                     </div>
 
@@ -980,7 +1069,8 @@
                                         <option value="Calling-Referral">Calling-Referral</option>
                                         <option value="Klara">Klara</option>
                                     </select>
-                                    <p style="color: #6c757d;font-size: 12px;">Select the outcome of your verification (Call/Web/RTE).</p>
+                                    <p style="color: #6c757d;font-size: 12px;">Select the outcome of your verification
+                                        (Call/Web/RTE).</p>
                                 </div>
                                 <div class="col">
                                     <label>Policy Name / Plan Type</label>
@@ -1055,7 +1145,8 @@
                         </div>
 
                         <div class="mt-3 d-flex justify-content-center mb-4">
-                            <i style="color: #6c757d;font-size: 14px;">Closing Script: "Thank you for your assistance and have a wonderful day/Happy weekend."</i>
+                            <i style="color: #6c757d;font-size: 14px;">Closing Script: "Thank you for your assistance
+                                and have a wonderful day/Happy weekend."</i>
                         </div>
 
                         <hr style="color:#b9b7b7;">
@@ -1067,6 +1158,59 @@
                     </div>
                 </form>
 
+            </div>
+        </div>
+
+        <div id="dashboardSection" class="container dashboard" style="display:none;">
+            <div class="p-4">
+                <div class="d-flex justify-content-between py-2">
+                    <div>
+                        <h4 class="mb-0">Verification Records</h4>
+                        <small>Manage, Import, and Export data (Decrypted View)</small>
+                    </div>
+                    <div class="d-flex" style="gap: 5px; height: 45px;">
+                        <input type="text" id="myInput" class="form-control" style="width: 230px; font-size: 13px;"
+                            placeholder="Search Patient ID, Insurance or Plan.">
+                        <button class="btn btn-primary "
+                            style="background-color: rgb(5, 113, 255) !important; color: white !important; padding: 8px;">
+                            <i class="fa-solid fa-file-import"></i> Import Queue
+                        </button>
+                        <button class="btn btn-success">
+                            <i class="fa-solid fa-file-export"></i> Export CSV
+                        </button>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between py-5 records">
+                    <div style="width: 30%;">
+                        <p>TOTAL RECORDS</p>
+                        <h4>0</h4>
+                    </div>
+                    <div style="width: 68%;">
+                        <p>INSURANCE DISTRIBUTION</p>
+                    </div>
+                </div>
+
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>DATE/APPT ID</th>
+                            <th>DETAILS</th>
+                            <th>INSURANCE/PLAN</th>
+                            <th>STATUS/ACTION</th>
+                            <th>GENERATED COMMENT</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        <tr>
+                            <td>Kamesh</td>
+                            <td>Aakash</td>
+                            <td>Saran</td>
+                            <td>Jacob</td>
+                            <td>Karthick</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -1163,7 +1307,7 @@
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const modeSelect = document.getElementById("modeSelect");
             const dynamicInput = document.getElementById("dynamicInput");
             const outOfStateSection = document.getElementById("outOfStateSection");
@@ -1270,6 +1414,50 @@
         updateAuthUI();
         toggleSecondaryDetails();
     </script>
+
+    <!-- For new verification and dashboard -->
+    <script>
+        const newVerificationSection = document.getElementById("newVerificationSection");
+        const dashboardSection = document.getElementById("dashboardSection");
+        const topBarTitle = document.getElementById("topBarTitle");
+
+        const newVerificationBtn = document.querySelector('.btns a[onclick="showNewVerification()"]');
+        const dashboardBtn = document.querySelector('.btns a[onclick="showDashboard()"]');
+
+        // Default view
+        showNewVerification();
+
+        function setActive(btn) {
+            newVerificationBtn.classList.remove("active");
+            dashboardBtn.classList.remove("active");
+            btn.classList.add("active");
+        }
+
+        function showNewVerification() {
+            newVerificationSection.style.display = "block";
+            dashboardSection.style.display = "none";
+            topBarTitle.innerText = "New Verification Entry";
+            setActive(newVerificationBtn);
+        }
+
+        function showDashboard() {
+            newVerificationSection.style.display = "none";
+            dashboardSection.style.display = "block";
+            topBarTitle.innerText = "Dashboard";
+            setActive(dashboardBtn);
+        }
+
+        // Dashboard table search
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
 
 </body>
 
