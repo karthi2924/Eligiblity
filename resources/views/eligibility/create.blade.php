@@ -984,8 +984,8 @@
 
                         <!-- NAVIGATION -->
                         <div class="d-flex justify-content-between mt-4">
-                            <button type="button" class="btn btn-light prev-step">Back</button>
-                            <button type="submit" class="btn btn-custom px-4">Submit</button>
+                            <button type="button" class="btn btn-light prev-step px-4">Back</button>
+                            <button type="button" class="btn btn-custom px-4 next-step">Next</button>
                         </div>
                     </div>
 
