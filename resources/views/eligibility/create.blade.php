@@ -14,6 +14,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <style>
+
+    :root {
+        --sidebar-width: 250px;
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -21,13 +26,11 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-
-
     .side-bars {
         background-color: #230083;
         color: #ffffff;
         height: 100vh;
-        width: 250px;
+        width: var(--sidebar-width);
         position: fixed;
         box-shadow: 4px 0 12px rgba(0, 0, 0, 0.12);
     }
@@ -111,22 +114,30 @@
         background-color: #ffffff;
     }
 
+    .main-content {
+        margin-left: var(--sidebar-width);
+        width: calc(100% - var(--sidebar-width));
+        transition: margin-left 0.3s ease;
+    }
+
+
     .top-bar {
         position: fixed;
         top: 0;
-        width: calc(100% - 250px);
+        left: var(--sidebar-width);
+        width: calc(100% - var(--sidebar-width));
+        right: 0;
         z-index: 1030;
         background-color: white;
-        height: 70px;
+        height: max-content;
         padding: 15px 24px;
         font-size: 18px;
         font-weight: 600;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-
-
     .topbar-para {
+        margin-top: 8px;
         height: 40px;
         width: 40px;
         background-color: #9ad1d4;
@@ -142,9 +153,16 @@
     .hero-section {
         background-color: white;
         padding: 20px;
-        width: 800px;
+        /* width: 800px; */
         border-radius: 8px;
         box-shadow: 0 0px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-section,
+    .dashboard {
+        width: 100%;
+        max-width: 900px;
+        margin: auto;
     }
 
     .hero-section form label {
@@ -347,7 +365,7 @@
     .dashboard {
         background-color: white;
         box-shadow: 0 0px 8px rgba(0, 0, 0, 0.2);
-        width: 900px;
+        /* width: 900px; */
         height: max-content;
         border-radius: 8px;
         margin-top: 152px;
@@ -374,6 +392,73 @@
         background-color: rgba(139, 109, 221, 0.35);
         font-weight: 600;
     }
+
+    @media (max-width: 992px) {
+        .top-bar {
+            left: 0;
+        }
+    }
+    
+    @media (max-width: 992px) {
+        .side-bars {
+            position: fixed;
+            left: -250px;
+            transition: left 0.3s ease;
+            z-index: 1050;
+        }
+
+        .side-bars.active {
+            left: 0;
+        }
+
+        .top-bar {
+            width: 100%;
+        }
+
+        .vertical-section > div:last-child {
+            margin-left: 0 !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .dashboard {
+            margin-top: 100px;
+        }
+
+        .records {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .records div {
+            width: 100% !important;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .btn {
+            width: 100%;
+        }
+    
+        .d-flex.justify-content-between {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }   
+    @media (max-width: 992px) {
+        .main-content {
+            margin-left: 0;
+            width: 100%;
+        }
+
+        .top-bar {
+            left: 0;
+            width: 100%;
+        }
+    }
+
+
+
 </style>
 
 <body>
@@ -399,22 +484,24 @@
                 <a href=""><i class="material-icons">lock_outline</i> HIPAA Compliant Mode</a>
             </div>
         </div>
-        <div style="margin-left: 250px; width: 100%;">
+        <div class="main-content">
             <div class="top-bar">
                 <div class="d-flex justify-content-between align-items-center">
                     <p id="topBarTitle">New Verification Entry</p>
                     <div class="d-flex gap-3 align-items-center">
                         <p class="topbar-para">US</p>
                         <div class="d-block session-status">
-                            <p style="margin-top: 2px; font-size: 16px; margin-bottom: 0;">User Session</p>
+                            <p style="margin-top: 6px; font-size: 16px; margin-bottom: 0;">User Session</p>
                             <p style="line-height: 1.2; font-size: 14px; color: #008000;">Active</p>
                         </div>
+                        <button style="background-color: #f3f3f3;" class="btn btn-light" id="menuToggle">
+                            <i class="fa fa-bars"></i>
+                        </button>
                     </div>
                 </div>
             </div>
 
-
-            <div id="newVerificationSection" class="mb-5" style="margin-top: 140px;">
+            <div id="newVerificationSection" class="mb-5" style="margin-top: 150px;">
                 <div class="hero-section container">
                     <form id="wizardForm">
                         <h4 class="mb-0">Eligibility & Benefits Verification</h4>
@@ -424,18 +511,18 @@
 
 
                             <div class="row mt-4">
-                                <div class="col">
+                                <div class="col-md-6 col-12">
                                     <label>Username <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" placeholder="Enter Username">
                                 </div>
-                                <div class="col">
+                                <div class="col-md-6 col-12">
                                     <label>Employee ID <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" placeholder="Enter Employee ID">
                                 </div>
                             </div>
 
                             <div class="row mt-3">
-                                <div class="col">
+                                <div class="col-md-6 col-12">
                                     <label>Time Zone (US) <span class="text-danger">*</span></label>
                                     <select class="form-select">
                                         <option selected disabled>Select Time Zone</option>
@@ -445,18 +532,18 @@
                                         <option>Eastern Time</option>
                                     </select>
                                 </div>
-                                <div class="col">
+                                <div class="col-md-6 col-12">
                                     <label>Date Worked <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control">
                                 </div>
                             </div>
 
                             <div class="row mt-3">
-                                <div class="col">
+                                <div class="col-md-6 col-12">
                                     <label>Department <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control">
                                 </div>
-                                <div class="col">
+                                <div class="col-md-6 col-12">
                                     <label>Patient ID <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control">
                                 </div>
@@ -496,7 +583,7 @@
                                 </select>
                             </div>
                             <div class="row mt-3">
-                                <div class="col">
+                                <div class="col-md-6 col-12">
                                     <label>Mode of Verification <span class="text-danger">*</span></label>
                                     <select class="form-select" id="mySelect" onchange="myFunction()">
                                         <option selected disabled>Select Mode of Verification</option>
@@ -505,7 +592,7 @@
                                         <option value="RTE (Real-Time Eligibility)">RTE (Real-Time Eligibility)</option>
                                     </select>
                                 </div>
-                                <div class="col" id="Web" style="display: none;">
+                                <div class="col-md-6 col-12" id="Web" style="display: none;">
                                     <label>Portal Name <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" placeholder="Enter Portal Name">
                                 </div>
@@ -527,12 +614,12 @@
                                     please?"</i>
 
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-md-6 col-12">
                                         <label for="">Insurance Phone # <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control " placeholder="(XXX) XXX-XXXX">
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col-md-6 col-12">
                                         <label for="">Rep Name <span class="text-danger">*</span></label><br>
                                         <i class="mode-para2" style="font-size: 12px;font-weight:600;">Script: "Sorry, I
                                             didn’t get your name. Could you please spell
@@ -569,14 +656,14 @@
 
 
                             <div class="row mt-4">
-                                <div class="col">
+                                <div class="col-md-6 col-12">
                                     <label>Policy Effective Date <span class="text-danger">*</span><br>
                                         <i class="policy-effective">Script: "May I have the patient policy effective
                                             date?"</i>
                                     </label>
                                     <input type="text" class="form-control" placeholder="MM/DD/YYYY">
                                 </div>
-                                <div class="col">
+                                <div class="col-md-6 col-12">
                                     <label>Policy Term Date <span class="text-danger">*</span><br>
                                         <i class="policy-term">Script: "Could you confirm if there is a future
                                             termination
@@ -634,11 +721,11 @@
                             </div>
 
                             <div class="row mt-5">
-                                <div class="col">
+                                <div class="col-md-6 col-12">
                                     <label>Provider Name <span class="text-danger">*</span></label>
                                     <input type="text" class="form-control" placeholder="eg: Dr. Skarthi">
                                 </div>
-                                <div class="col" id="Out of Network" style="display: none;">
+                                <div class="col-md-6 col-12" id="Out of Network" style="display: none;">
                                     <label>Has OON Coverage? <br>
                                         <i class="OON-Coverage">Script: "May I know whether the patient has Out of
                                             network
@@ -805,7 +892,7 @@
                             </div>
                             <div id="Not Required">
                                 <div class="row mt-3">
-                                    <div class="col">
+                                    <div class="col-md-6 col-12">
                                         <label>PCP Name<br>
                                             <i class="referral-script">
                                                 Script: "May I have the PCP Name?"
@@ -814,7 +901,7 @@
                                         <input type="text" class="form-control">
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col-md-6 col-12">
                                         <label>PCP NPI<br>
                                             <i class="referral-script">
                                                 Script: "May I know the NPI of the PCP if available?"
@@ -825,7 +912,7 @@
                                 </div>
 
                                 <div class="row mt-3">
-                                    <div class="col">
+                                    <div class="col-md-6 col-12">
                                         <label>PCP Phone<br>
                                             <i class="referral-script">
                                                 Script: "May I have the PCP Phone #?"
@@ -834,7 +921,7 @@
                                         <input type="text" class="form-control ">
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col-md-6 col-12">
                                         <label>Referral Updated with Insurance?<br>
                                             <i class="referral-script">
                                                 Script: "May I know whether there is any referral on file for our
@@ -850,7 +937,7 @@
                                 </div>
 
                                 <div class="row mt-3">
-                                    <div class="col">
+                                    <div class="col-md-6 col-12">
                                         <label>Referral Number <span class="text-danger">*</span><br>
                                             <i class="referral-script">
                                                 Script: "May I have the referral Number?"
@@ -859,7 +946,7 @@
                                         <input type="text" class="form-control ">
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col-md-6 col-12">
                                         <label>Referral Effective<br>
                                             <i class="referral-script">
                                                 Script: "May I have the effective date of the referral?"
@@ -870,7 +957,7 @@
                                 </div>
 
                                 <div class="row mt-3">
-                                    <div class="col">
+                                    <div class="col-md-6 col-12">
                                         <label>Referral Term<br>
                                             <i class="referral-script">
                                                 Script: "May I know when the referral expires / terms for our provider?"
@@ -879,7 +966,7 @@
                                         <input type="date" class="form-control ">
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col-md-6 col-12">
                                         <label>Visits Allowed</label>
                                         <input type="number" class="form-control ">
                                     </div>
@@ -1075,7 +1162,7 @@
                                 <p class="mb-0" style="font-size: 16px;">Employee Updates</p>
                                 <hr style="color: #446494;" class="mt-2 mb-3">
                                 <div class="row mt-3">
-                                    <div class="col">
+                                    <div class="col-md-6 col-12">
                                         <label>Action <span class="text-danger">*</span></label>
                                         <select name="action-selects" class="form-select mb-1">
                                             <option value="" disabled selected>Select Action</option>
@@ -1091,18 +1178,18 @@
                                             verification
                                             (Call/Web/RTE).</p>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-md-6 col-12">
                                         <label>Policy Name / Plan Type</label>
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="row mt-3">
-                                    <div class="col">
+                                    <div class="col-md-6 col-12">
                                         <label>Flag Alert</label>
                                         <input type="text" class="form-control" placeholder="Any Critical Flags?">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-md-6 col-12">
                                         <label>CC on File?</label>
                                         <select class="form-select">
                                             <option value="" disabled selected>Select</option>
@@ -1118,7 +1205,7 @@
                                     </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col">
+                                    <div class="col-md-6 col-12">
                                         <label>Appointment Notes</label>
                                         <textarea class="form-control" rows="3"></textarea>
                                     </div>
@@ -1136,15 +1223,15 @@
                                         <div class="col mb">
                                             <input type="text" class="form-control" placeholder="City">
                                         </div>
-                                        <div class="col">
+                                        <div class="col-md-6 col-12">
                                             <input type="text" class="form-control" placeholder="State">
                                         </div>
-                                        <div class="col">
+                                        <div class="col-md-6 col-12">
                                             <input type="text" class="form-control" placeholder="Zip">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col-md-6 col-12">
                                     <label>Electronic Payer ID</label>
                                     <input type="text" class="form-control mb-2">
                                     <label>Timely Filing Limit (Days)</label>
@@ -1211,42 +1298,47 @@
                             <p>INSURANCE DISTRIBUTION</p>
                         </div>
                     </div>
-
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>DATE/APPT ID</th>
-                                <th>DETAILS</th>
-                                <th>INSURANCE/PLAN</th>
-                                <th>STATUS/ACTION</th>
-                                <th>GENERATED COMMENT</th>
-                            </tr>
-                        </thead>
-                        <tbody id="myTable">
-                            <tr>
-                                <td>Kamesh</td>
-                            </tr>
-                            <tr>
-                                <td>Aakash</td>
-                            </tr>
-                            <tr>
-                                <td>Saran</td>
-                            </tr>
-                            <tr>
-                                <td>Jacob</td>
-                            </tr>
-                            <tr>
-                                <td>Karthick</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>DATE/APPT ID</th>
+                                    <th>DETAILS</th>
+                                    <th>INSURANCE/PLAN</th>
+                                    <th>STATUS/ACTION</th>
+                                    <th>GENERATED COMMENT</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+                                <tr>
+                                    <td>Kamesh</td>
+                                </tr>
+                                <tr>
+                                    <td>Aakash</td>
+                                </tr>
+                                <tr>
+                                    <td>Saran</td>
+                                </tr>
+                                <tr>
+                                    <td>Jacob</td>
+                                </tr>
+                                <tr>
+                                    <td>Karthick</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-
+    <!-- side icon -->
+    <script>
+        document.getElementById("menuToggle").addEventListener("click", function () {
+            document.querySelector(".side-bars").classList.toggle("active");
+        });
+    </script>
 
     <script>
         document.querySelectorAll('.next-step').forEach(button => {
