@@ -487,7 +487,7 @@
         <div class="main-content">
             <div class="top-bar">
                 <div class="d-flex justify-content-between align-items-center">
-                    <p id="topBarTitle">New Verification Entry</p>
+                    <p style="font-size: 22px;" id="topBarTitle">New Verification Entry</p>
                     <div class="d-flex gap-3 align-items-center">
                         <p class="topbar-para">US</p>
                         <div class="d-block session-status">
