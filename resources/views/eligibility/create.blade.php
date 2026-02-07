@@ -11,6 +11,7 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <style>
     * {
@@ -20,62 +21,92 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    /* =========================
+   SIDEBAR ONLY
+========================= */
+
     .side-bars {
         background-color: #230083;
-        color: white;
+        color: #ffffff;
         height: 100vh;
         width: 250px;
         position: fixed;
+        box-shadow: 4px 0 12px rgba(0, 0, 0, 0.12);
     }
 
     .title {
-        border-bottom: 1px solid #e9e8eb;
-        line-height: 10px;
-        padding-top: 30px;
-        padding-left: 20px;
-        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 20px 20px 16px;
     }
 
+    .title p:first-child {
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        margin-bottom: 4px;
+    }
 
+    .title p:last-child {
+        font-size: 12px;
+        opacity: 0.85;
+    }
+
+    .btns {
+        margin-top: 24px;
+    }
 
     .btns a {
         width: 210px;
-        color: white;
+        color: #ffffff;
         border: none;
-        display: block;
-        padding: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 14px;
         text-align: left;
         text-decoration: none;
-        border-radius: 8px;
+        border-radius: 10px;
         margin-left: 10px;
+        font-size: 14px;
+        transition: all 0.25s ease;
+    }
+
+    .btns a i {
+        opacity: 0.9;
+        font-size: 16px;
     }
 
     .btns a:hover {
-        background-color: rgba(139, 109, 221, 0.15);
-        color: white;
+        background-color: rgba(139, 109, 221, 0.18);
+    }
 
+    .btns a.active {
+        background-color: rgba(139, 109, 221, 0.35);
+        font-weight: 600;
+        box-shadow: inset 3px 0px 0px #ffffff; 
     }
 
     .bottom-btn {
         position: absolute;
-        bottom: 0px;
+        bottom: 0;
         width: 250px;
-        background-color: rgba(139, 109, 221, 0.15);
-        padding: 10px;
+        background-color: rgba(139, 109, 221, 0.18);
+        padding: 14px;
     }
 
     .bottom-btn a {
-        color: white;
+        color: #ffffff;
         text-decoration: none;
         font-size: 14px;
+        display: flex;
+        align-items: center;
     }
 
     .bottom-btn a i {
-        vertical-align: middle;
         font-size: 20px;
-        height: 22px;
-        margin-right: 5px;
+        margin-right: 6px;
     }
+
 
     .vertical-section {
         display: flex;
@@ -115,7 +146,7 @@
         padding: 20px;
         width: 800px;
         border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1);
     }
 
     .hero-section form label {
@@ -314,10 +345,43 @@
         border-radius: 8px;
         border: 1px solid #B6C6FF;
     }
+
+    /* dashboard */
+    .dashboard {
+        background-color: white;
+        box-shadow: 0 0px 8px rgba(0, 0, 0, 0.1);
+        width: 900px;
+        height: max-content;
+        border-radius: 8px;
+        margin-top: 152px;
+        margin-left: 450px;
+    }
+
+    .records div {
+        background-color: #cae9ff;
+        color: darkblue;
+        font-weight: 600;
+        gap: 15px;
+        padding: 10px 20px;
+        border-radius: 8px;
+    }
+
+    .table th,
+    small {
+        color: #919090f5;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: sans-serif;
+    }
+
+    .btns a.active {
+        background-color: rgba(139, 109, 221, 0.35);
+        font-weight: 600;
+    }
 </style>
 
 <body>
-    <div class="vertical-section">
+    <div class="vertical-section" style="background-color: rgb(252, 252, 252); height: 100vh;">
         <div class="side-bars">
             <div class="title">
                 <p style="font-size: 20px; font-weight: bold;">Pre-registration Verify</p>
@@ -325,11 +389,15 @@
             </div>
             <span></span>
             <div class="btns">
-                <a href="#" class="mt-4">
+                <a href="#" class="mt-4" onclick="showNewVerification()">
                     <i class='far fa-file-alt' style="margin-right: 12px;"></i>
                     New Verification
                 </a>
-                <a href="#" class="mt-3"><i class='fas fa-clinic-medical' style="margin-right: 12px;"></i> Dashboard</a>
+
+                <a href="#" class="mt-3" onclick="showDashboard()">
+                    <i class='fas fa-clinic-medical' style="margin-right: 12px;"></i>
+                    Dashboard
+                </a>
             </div>
             <div class="bottom-btn">
                 <a href=""><i class="material-icons">lock_outline</i> HIPAA Compliant Mode</a>
@@ -339,7 +407,7 @@
         <div class="top-bar" style="margin-left: 250px;">
 
             <div class="d-flex justify-content-between align-items-center">
-                <p>New Verification Entry</p>
+                <p id="topBarTitle">New Verification Entry</p>
                 <div class="d-flex gap-3 align-items-center">
                     <p class="topbar-para">US</p>
                     <div class="d-block session-status">
@@ -351,7 +419,7 @@
         </div>
 
 
-        <div class="p-3 mt-5" style="margin-left:500px;">
+        <div id="newVerificationSection" class="p-3 mt-5" style="margin-left:500px;">
             <div class="hero-section container mt-5">
                 <form id="wizardForm">
                     <h4 class="mb-0">Eligibility & Benefits Verification</h4>
@@ -1100,6 +1168,59 @@
 
             </div>
         </div>
+
+        <div id="dashboardSection" class="container dashboard" style="display:none;">
+            <div class="p-4">
+                <div class="d-flex justify-content-between py-2">
+                    <div>
+                        <h4 class="mb-0">Verification Records</h4>
+                        <small>Manage, Import, and Export data (Decrypted View)</small>
+                    </div>
+                    <div class="d-flex" style="gap: 5px; height: 45px;">
+                        <input type="text" id="myInput" class="form-control" style="width: 230px; font-size: 13px;"
+                            placeholder="Search Patient ID, Insurance or Plan.">
+                        <button class="btn btn-primary "
+                            style="background-color: rgb(5, 113, 255) !important; color: white !important; padding: 8px;">
+                            <i class="fa-solid fa-file-import"></i> Import Queue
+                        </button>
+                        <button class="btn btn-success">
+                            <i class="fa-solid fa-file-export"></i> Export CSV
+                        </button>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between py-5 records">
+                    <div style="width: 30%;">
+                        <p>TOTAL RECORDS</p>
+                        <h4>0</h4>
+                    </div>
+                    <div style="width: 68%;">
+                        <p>INSURANCE DISTRIBUTION</p>
+                    </div>
+                </div>
+
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>DATE/APPT ID</th>
+                            <th>DETAILS</th>
+                            <th>INSURANCE/PLAN</th>
+                            <th>STATUS/ACTION</th>
+                            <th>GENERATED COMMENT</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        <tr>
+                            <td>Kamesh</td>
+                            <td>Aakash</td>
+                            <td>Saran</td>
+                            <td>Jacob</td>
+                            <td>Karthick</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
 
@@ -1320,6 +1441,50 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleSecondaryDetails();
 });
 </script>
+
+
+    <!-- For new verification and dashboard -->
+    <script>
+        const newVerificationSection = document.getElementById("newVerificationSection");
+        const dashboardSection = document.getElementById("dashboardSection");
+        const topBarTitle = document.getElementById("topBarTitle");
+
+        const newVerificationBtn = document.querySelector('.btns a[onclick="showNewVerification()"]');
+        const dashboardBtn = document.querySelector('.btns a[onclick="showDashboard()"]');
+
+        // Default view
+        showNewVerification();
+
+        function setActive(btn) {
+            newVerificationBtn.classList.remove("active");
+            dashboardBtn.classList.remove("active");
+            btn.classList.add("active");
+        }
+
+        function showNewVerification() {
+            newVerificationSection.style.display = "block";
+            dashboardSection.style.display = "none";
+            topBarTitle.innerText = "New Verification Entry";
+            setActive(newVerificationBtn);
+        }
+
+        function showDashboard() {
+            newVerificationSection.style.display = "none";
+            dashboardSection.style.display = "block";
+            topBarTitle.innerText = "Dashboard";
+            setActive(dashboardBtn);
+        }
+
+        // Dashboard table search
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 
 
 </body>
