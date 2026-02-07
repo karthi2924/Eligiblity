@@ -21,9 +21,7 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    /* =========================
-   SIDEBAR ONLY
-========================= */
+ 
 
     .side-bars {
         background-color: #230083;
@@ -537,7 +535,7 @@
 
                                 <div class="col">
                                     <label for="">Rep Name <span class="text-danger">*</span></label><br>
-                                    <i class="mode-para2">Script: "Sorry, I didn’t get your name. Could you please spell
+                                    <i class="mode-para2" style="font-size: 12px;font-weight:600 ;">Script: "Sorry, I didn’t get your name. Could you please spell
                                         it out for my documentation?"</i>
                                     <input type="text" class="form-control ">
                                 </div>
