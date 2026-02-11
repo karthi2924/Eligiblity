@@ -392,7 +392,7 @@
         font-weight: 600;
     }
 
-    .message_color{
+    .message_color {
         font-size: 12px;
         color: #757474;
     }
@@ -713,8 +713,8 @@
                                         network
                                         or Out of network with the patient plan?"</i>
                                 </label>
-                                <select name="status" class="form-select mt-2 mb-1"
-                                    id="participation-selection" onchange="participationFunction()">
+                                <select name="status" class="form-select mt-2 mb-1" id="participation-selection"
+                                    onchange="participationFunction()">
                                     <option value="In Network">In Network</option>
                                     <option value="Out of Network">Out of Network</option>
                                     <option value="Other">Other</option>
@@ -1219,7 +1219,8 @@
                             <div class="row mt-4">
                                 <div class="col mail-address">
                                     <p style="font-size: 14px;">Claim Mailing Address</p>
-                                    <input type="text" class="form-control mb-3" placeholder="Address Line 1" name="details">
+                                    <input type="text" class="form-control mb-3" placeholder="Address Line 1"
+                                        name="details">
                                     <input type="text" class="form-control mb-3"
                                         placeholder="Address Line 2 (Optional)">
                                     <div class="row">
@@ -1286,9 +1287,10 @@
                                 style="background-color: rgb(5, 113, 255) !important; color: white !important; padding: 8px;">
                                 <i class="fa-solid fa-file-import"></i> Import Queue
                             </button>
-                            <button class="btn btn-success">
-                                <i class="fa-solid fa-file-export"></i> Export CSV
-                            </button>
+                            <a href="{{ route('eligibility.export') }}" class="btn btn-success">
+                                <i class="fa-solid fa-file-export"></i> Export Excel
+                            </a>
+
                         </div>
                     </div>
 
@@ -1315,20 +1317,23 @@
                             </thead>
                             <tbody id="myTable">
                                 @foreach($verifications as $verification)
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{ $verification->date }} <br>
-                                        <span class="message_color">{{ $verification->appt_id }}</span>
-                                    </td>
-                                    <td>{{ $verification->details }}</td>
-                                    <td>{{ $verification->insurance }} <br>
-                                        <span class="message_color">{{ $verification->plan }}</span>
-                                    </td>
-                                    <td><span style="background-color: #00800020; color: #024102; border-radius: 12px; font-size: 12px; padding:1px 8px ">{{ $verification->status }}</span> <br>
-                                        <span style="background-color: #0161f120; color: blue; border-radius: 12px; font-size: 12px; padding:1px 8px ">{{ $verification->action }}</span>
-                                    </td>
-                                    <td><span class="message_color">{{ $verification->comments }} </span></td>
-                                </tr>
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{ $verification->date }} <br>
+                                            <span class="message_color">{{ $verification->appt_id }}</span>
+                                        </td>
+                                        <td>{{ $verification->details }}</td>
+                                        <td>{{ $verification->insurance }} <br>
+                                            <span class="message_color">{{ $verification->plan }}</span>
+                                        </td>
+                                        <td><span
+                                                style="background-color: #00800020; color: #024102; border-radius: 12px; font-size: 12px; padding:1px 8px ">{{ $verification->status }}</span>
+                                            <br>
+                                            <span
+                                                style="background-color: #0161f120; color: blue; border-radius: 12px; font-size: 12px; padding:1px 8px ">{{ $verification->action }}</span>
+                                        </td>
+                                        <td><span class="message_color">{{ $verification->comments }} </span></td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -1340,7 +1345,7 @@
 
     <!-- side icon -->
     <script>
-        document.getElementById("menuToggle").addEventListener("click", function() {
+        document.getElementById("menuToggle").addEventListener("click", function () {
             document.querySelector(".side-bars").classList.toggle("active");
         });
     </script>
@@ -1434,7 +1439,7 @@
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const modeSelect = document.getElementById("modeSelect");
             const dynamicInput = document.getElementById("dynamicInput");
             const outOfStateSection = document.getElementById("outOfStateSection");
@@ -1489,7 +1494,7 @@
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
 
             const authRequired = document.getElementById("authRequired");
             const authOnFile = document.getElementById("authOnFile");
@@ -1595,10 +1600,10 @@
         }
 
         // Dashboard table search
-        $(document).ready(function() {
-            $("#myInput").on("keyup", function() {
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
+                $("#myTable tr").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });

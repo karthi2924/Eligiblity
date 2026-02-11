@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Verification;
+use App\Exports\VerificationsExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class VerificationController extends Controller
 {
 
@@ -30,4 +33,10 @@ class VerificationController extends Controller
 
         return redirect()->route('eligibility.create')->with('success', 'BGV verification submitted successfully.');
     }
+
+    public function export()
+{
+    return Excel::download(new VerificationsExport, 'verifications.xlsx');
+}
+
 }
