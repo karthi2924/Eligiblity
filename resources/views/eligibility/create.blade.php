@@ -392,6 +392,11 @@
         font-weight: 600;
     }
 
+    .message_color{
+        font-size: 12px;
+        color: #757474;
+    }
+
     @media (max-width: 992px) {
         .top-bar {
             left: 0;
@@ -1301,13 +1306,10 @@
                             <thead>
                                 <tr>
                                     <th>S.No</th>
-                                    <th>Date</th>
-                                    <th>Appt ID</th>
+                                    <th>Date/Appt ID</th>
                                     <th>Details</th>
-                                    <th>Insurance</th>
-                                    <th>Plan</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Insurance/Plan</th>
+                                    <th>Status/Action</th>
                                     <th>Comments</th>
                                 </tr>
                             </thead>
@@ -1315,14 +1317,17 @@
                                 @foreach($verifications as $verification)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{ $verification->date }}</td>
-                                    <td>{{ $verification->appt_id }}</td>
+                                    <td>{{ $verification->date }} <br>
+                                        <span class="message_color">{{ $verification->appt_id }}</span>
+                                    </td>
                                     <td>{{ $verification->details }}</td>
-                                    <td>{{ $verification->insurance }}</td>
-                                    <td>{{ $verification->plan }}</td>
-                                    <td>{{ $verification->status }}</td>
-                                    <td>{{ $verification->action }}</td>
-                                    <td>{{ $verification->comments }}</td>
+                                    <td>{{ $verification->insurance }} <br>
+                                        <span class="message_color">{{ $verification->plan }}</span>
+                                    </td>
+                                    <td><span style="background-color: #00800020; color: #024102; border-radius: 12px; font-size: 12px; padding:1px 8px ">{{ $verification->status }}</span> <br>
+                                        <span style="background-color: #0161f120; color: blue; border-radius: 12px; font-size: 12px; padding:1px 8px ">{{ $verification->action }}</span>
+                                    </td>
+                                    <td><span class="message_color">{{ $verification->comments }} </span></td>
                                 </tr>
                                 @endforeach
                             </tbody>
