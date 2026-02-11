@@ -1310,21 +1310,13 @@
                                 </tr>
                             </thead>
                             <tbody id="myTable">
-                                <tr>
-                                    <td>Kamesh</td>
-                                </tr>
-                                <tr>
-                                    <td>Aakash</td>
-                                </tr>
-                                <tr>
-                                    <td>Saran</td>
-                                </tr>
-                                <tr>
-                                    <td>Jacob</td>
-                                </tr>
-                                <tr>
-                                    <td>Karthick</td>
-                                </tr>
+                               <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                               </tr>
                             </tbody>
                         </table>
                     </div>
