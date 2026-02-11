@@ -14,7 +14,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <style>
-
     :root {
         --sidebar-width: 250px;
     }
@@ -398,7 +397,7 @@
             left: 0;
         }
     }
-    
+
     @media (max-width: 992px) {
         .side-bars {
             position: fixed;
@@ -415,7 +414,7 @@
             width: 100%;
         }
 
-        .vertical-section > div:last-child {
+        .vertical-section>div:last-child {
             margin-left: 0 !important;
         }
     }
@@ -439,12 +438,13 @@
         .btn {
             width: 100%;
         }
-    
+
         .d-flex.justify-content-between {
             flex-direction: column;
             gap: 10px;
         }
-    }   
+    }
+
     @media (max-width: 992px) {
         .main-content {
             margin-left: 0;
@@ -456,9 +456,6 @@
             width: 100%;
         }
     }
-
-
-
 </style>
 
 <body>
@@ -503,7 +500,8 @@
 
             <div id="newVerificationSection" class="mb-5" style="margin-top: 150px;">
                 <div class="hero-section container">
-                    <form id="wizardForm">
+                    <form id="wizardForm" action="{{route('eligibility.store')}}" method="post">
+                        @csrf
                         <h4 class="mb-0">Eligibility & Benefits Verification</h4>
                         <p style="font-size: 14px;">Athena / Commercial Flow (E2E Encrypted)</p>
                         <!-- STEP 1 -->
@@ -545,14 +543,14 @@
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <label>Patient ID <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="appt_id">
                                 </div>
                             </div>
 
                             <div class="row mt-3 mb-5">
                                 <div>
                                     <label>Date of Service <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control">
+                                    <input type="date" class="form-control" name="date">
                                 </div>
                             </div>
                             <hr style="color: #b9b7b7;">
@@ -567,7 +565,7 @@
 
                             <div class="mt-3">
                                 <label>Insurance Name <span class="text-danger">*</span></label>
-                                <select class="form-select mt-2">
+                                <select class="form-select mt-2" name="insurance">
                                     <option selected disabled>Select Insurance Name</option>
                                     <option value="Aetna">Aetna</option>
                                     <option value="Bluecard">Bluecard</option>
@@ -679,7 +677,7 @@
                                         <i class="type-of-plan">Script: "May I know what type of plan does the patient
                                             have?"</i>
                                     </label>
-                                    <select name="type_of_plan-select" class="form-select">
+                                    <select class="form-select" name="plan">
                                         <option value="" disabled selected>Select Type of Plan</option>
                                         <option value="HMO">HMO</option>
                                         <option value="PPO">PPO</option>
@@ -710,7 +708,7 @@
                                         network
                                         or Out of network with the patient plan?"</i>
                                 </label>
-                                <select name="participation-status-select" class="form-select mt-2 mb-1"
+                                <select name="status" class="form-select mt-2 mb-1"
                                     id="participation-selection" onchange="participationFunction()">
                                     <option value="In Network">In Network</option>
                                     <option value="Out of Network">Out of Network</option>
@@ -1164,7 +1162,7 @@
                                 <div class="row mt-3">
                                     <div class="col-md-6 col-12">
                                         <label>Action <span class="text-danger">*</span></label>
-                                        <select name="action-selects" class="form-select mb-1">
+                                        <select name="action" class="form-select mb-1">
                                             <option value="" disabled selected>Select Action</option>
                                             <option value="New Verification">New Verification</option>
                                             <option value="Old Verification">Old Verification</option>
@@ -1216,7 +1214,7 @@
                             <div class="row mt-4">
                                 <div class="col mail-address">
                                     <p style="font-size: 14px;">Claim Mailing Address</p>
-                                    <input type="text" class="form-control mb-3" placeholder="Address Line 1">
+                                    <input type="text" class="form-control mb-3" placeholder="Address Line 1" name="details">
                                     <input type="text" class="form-control mb-3"
                                         placeholder="Address Line 2 (Optional)">
                                     <div class="row">
@@ -1244,7 +1242,7 @@
                             <div class="mt-4">
                                 <div class="comments-box">
                                     <label class="mb-2">Comments / Call Notes</label>
-                                    <textarea rows="4" class="form-control"></textarea>
+                                    <textarea rows="4" class="form-control" name="comments"></textarea>
                                     <div class="d-flex justify-content-end mt-2">
                                         <button type="button" class="btn btn-primary">Refine with AI Bot</button>
                                     </div>
@@ -1292,7 +1290,7 @@
                     <div class="d-flex justify-content-between py-5 records">
                         <div style="width: 30%;">
                             <p>TOTAL RECORDS</p>
-                            <h4>0</h4>
+                            <h4>{{ $verifications->count() }}</h4>
                         </div>
                         <div style="width: 68%;">
                             <p>INSURANCE DISTRIBUTION</p>
@@ -1302,21 +1300,31 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>DATE/APPT ID</th>
-                                    <th>DETAILS</th>
-                                    <th>INSURANCE/PLAN</th>
-                                    <th>STATUS/ACTION</th>
-                                    <th>GENERATED COMMENT</th>
+                                    <th>S.No</th>
+                                    <th>Date</th>
+                                    <th>Appt ID</th>
+                                    <th>Details</th>
+                                    <th>Insurance</th>
+                                    <th>Plan</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                    <th>Comments</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
-                               <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                               </tr>
+                                @foreach($verifications as $verification)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{ $verification->date }}</td>
+                                    <td>{{ $verification->appt_id }}</td>
+                                    <td>{{ $verification->details }}</td>
+                                    <td>{{ $verification->insurance }}</td>
+                                    <td>{{ $verification->plan }}</td>
+                                    <td>{{ $verification->status }}</td>
+                                    <td>{{ $verification->action }}</td>
+                                    <td>{{ $verification->comments }}</td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -1327,7 +1335,7 @@
 
     <!-- side icon -->
     <script>
-        document.getElementById("menuToggle").addEventListener("click", function () {
+        document.getElementById("menuToggle").addEventListener("click", function() {
             document.querySelector(".side-bars").classList.toggle("active");
         });
     </script>
@@ -1421,7 +1429,7 @@
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
             const modeSelect = document.getElementById("modeSelect");
             const dynamicInput = document.getElementById("dynamicInput");
             const outOfStateSection = document.getElementById("outOfStateSection");
@@ -1476,7 +1484,7 @@
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function() {
 
             const authRequired = document.getElementById("authRequired");
             const authOnFile = document.getElementById("authOnFile");
@@ -1582,10 +1590,10 @@
         }
 
         // Dashboard table search
-        $(document).ready(function () {
-            $("#myInput").on("keyup", function () {
+        $(document).ready(function() {
+            $("#myInput").on("keyup", function() {
                 var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function () {
+                $("#myTable tr").filter(function() {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
