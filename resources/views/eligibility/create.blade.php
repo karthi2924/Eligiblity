@@ -1318,6 +1318,23 @@
                             </thead>
                             <tbody id="myTable">
                                 @foreach($verifications as $verification)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{ $verification->date }} <br>
+                                            <span class="message_color">{{ $verification->appt_id }}</span>
+                                        </td>
+                                        <td>{{ $verification->details }}</td>
+                                        <td>{{ $verification->insurance }} <br>
+                                            <span class="message_color">{{ $verification->plan }}</span>
+                                        </td>
+                                        <td><span
+                                                style="background-color: #00800020; color: #024102; border-radius: 12px; font-size: 12px; padding:1px 8px ">{{ $verification->status }}</span>
+                                            <br>
+                                            <span
+                                                style="background-color: #0161f120; color: blue; border-radius: 12px; font-size: 12px; padding:1px 8px ">{{ $verification->action }}</span>
+                                        </td>
+                                        <td><span class="message_color">{{ $verification->comments }} </span></td>
+                                    </tr>
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{ $verification->date }} <br>
@@ -1331,6 +1348,11 @@
                                         <span style="background-color: #0161f120; color: blue; border-radius: 12px; font-size: 12px; padding:1px 8px ">{{ $verification->action }}</span>
                                     </td>
                                     <td><span class="message_color">{{ $verification->comments }} </span></td>
+                                    <td>
+                                        <a href="{{ route('eligibility.edit', $verification->id) }}" class="btn btn-sm btn-primary">
+                                            Edit
+                                        </a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -1341,7 +1363,7 @@
         </div>
     </div>
 
-    <!-- show dashboard after update -->
+    
 
     <!-- side icon -->
     <script>
