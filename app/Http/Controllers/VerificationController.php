@@ -34,11 +34,9 @@ class VerificationController extends Controller
         return redirect()->route('eligibility.create')->with('success', 'BGV verification submitted successfully.');
     }
 
-<<<<<<< HEAD
     public function export()
 {
     return Excel::download(new VerificationsExport, 'verifications.xlsx');
-=======
     public function edit($id)
 {
     $verification = Verification::findOrFail($id);
@@ -64,7 +62,6 @@ public function update(Request $request, $id)
     return redirect()->route('eligibility.create')
                      ->with('showDashboard', true)
                      ->with('success', 'Record updated successfully.');
->>>>>>> 8fc095cec82ef28ce87123fd5e7658fccaf472f3
 }
 
 }
