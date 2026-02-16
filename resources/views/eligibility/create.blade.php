@@ -1342,12 +1342,6 @@
     </div>
 
     <!-- show dashboard after update -->
-    <script>
-@if(session('showDashboard'))
-    document.getElementById('newVerificationSection').style.display = 'none';
-    document.getElementById('dashboardSection').style.display = 'block';
-@endif
-</script>
 
     <!-- side icon -->
     <script>
