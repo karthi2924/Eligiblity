@@ -1313,27 +1313,25 @@
                                     <th>Insurance/Plan</th>
                                     <th>Status/Action</th>
                                     <th>Comments</th>
+                                    <th>Update</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
                                 @foreach($verifications as $verification)
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{ $verification->date }} <br>
-                                            <span class="message_color">{{ $verification->appt_id }}</span>
-                                        </td>
-                                        <td>{{ $verification->details }}</td>
-                                        <td>{{ $verification->insurance }} <br>
-                                            <span class="message_color">{{ $verification->plan }}</span>
-                                        </td>
-                                        <td><span
-                                                style="background-color: #00800020; color: #024102; border-radius: 12px; font-size: 12px; padding:1px 8px ">{{ $verification->status }}</span>
-                                            <br>
-                                            <span
-                                                style="background-color: #0161f120; color: blue; border-radius: 12px; font-size: 12px; padding:1px 8px ">{{ $verification->action }}</span>
-                                        </td>
-                                        <td><span class="message_color">{{ $verification->comments }} </span></td>
-                                    </tr>
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{ $verification->date }} <br>
+                                        <span class="message_color">{{ $verification->appt_id }}</span>
+                                    </td>
+                                    <td>{{ $verification->details }}</td>
+                                    <td>{{ $verification->insurance }} <br>
+                                        <span class="message_color">{{ $verification->plan }}</span>
+                                    </td>
+                                    <td><span style="background-color: #00800020; color: #024102; border-radius: 12px; font-size: 12px; padding:1px 8px ">{{ $verification->status }}</span> <br>
+                                        <span style="background-color: #0161f120; color: blue; border-radius: 12px; font-size: 12px; padding:1px 8px ">{{ $verification->action }}</span>
+                                    </td>
+                                    <td><span class="message_color">{{ $verification->comments }} </span></td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -1342,6 +1340,14 @@
             </div>
         </div>
     </div>
+
+    <!-- show dashboard after update -->
+    <script>
+@if(session('showDashboard'))
+    document.getElementById('newVerificationSection').style.display = 'none';
+    document.getElementById('dashboardSection').style.display = 'block';
+@endif
+</script>
 
     <!-- side icon -->
     <script>
