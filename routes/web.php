@@ -14,12 +14,9 @@ use App\Http\Controllers\VerificationController;
 
 Route::get('/', [VerificationController::class, 'create'])->name('eligibility.create');
 Route::post('/eligibility', [VerificationController::class, 'store'])->name('eligibility.store');
-<<<<<<< HEAD
 Route::get('/eligibility/export', [VerificationController::class, 'export'])
     ->name('eligibility.export');
-=======
 
 Route::get('/eligibility/{id}/edit', [VerificationController::class, 'edit'])->name('eligibility.edit');
 Route::put('/eligibility/{id}', [VerificationController::class, 'update'])->name('eligibility.update');
->>>>>>> 8fc095cec82ef28ce87123fd5e7658fccaf472f3
 
