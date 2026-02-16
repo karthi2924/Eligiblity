@@ -37,6 +37,7 @@ class VerificationController extends Controller
     public function export()
 {
     return Excel::download(new VerificationsExport, 'verifications.xlsx');
+}
     public function edit($id)
 {
     $verification = Verification::findOrFail($id);
