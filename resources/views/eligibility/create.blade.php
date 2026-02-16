@@ -1311,6 +1311,7 @@
                                     <th>Insurance/Plan</th>
                                     <th>Status/Action</th>
                                     <th>Comments</th>
+                                    <th>Update</th>
                                 </tr>
                             </thead>
                             <tbody id="myTable">
@@ -1328,6 +1329,11 @@
                                         <span style="background-color: #0161f120; color: blue; border-radius: 12px; font-size: 12px; padding:1px 8px ">{{ $verification->action }}</span>
                                     </td>
                                     <td><span class="message_color">{{ $verification->comments }} </span></td>
+                                    <td>
+                                        <a href="{{ route('eligibility.edit', $verification->id) }}" class="btn btn-sm btn-primary">
+                                            Edit
+                                        </a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -1337,6 +1343,14 @@
             </div>
         </div>
     </div>
+
+    <!-- show dashboard after update -->
+    <script>
+@if(session('showDashboard'))
+    document.getElementById('newVerificationSection').style.display = 'none';
+    document.getElementById('dashboardSection').style.display = 'block';
+@endif
+</script>
 
     <!-- side icon -->
     <script>

@@ -30,4 +30,32 @@ class VerificationController extends Controller
 
         return redirect()->route('eligibility.create')->with('success', 'BGV verification submitted successfully.');
     }
+
+    public function edit($id)
+{
+    $verification = Verification::findOrFail($id);
+    return view('eligibility.edit', compact('verification'));
+}
+
+public function update(Request $request, $id)
+{
+    $validated = $request->validate([
+        'date'      => 'required|date',
+        'appt_id'   => 'required|string|max:255',
+        'details'   => 'required|string|max:255',
+        'insurance' => 'required|string|max:255',
+        'plan'      => 'required|string|max:255',
+        'status'    => 'required|string|max:255',
+        'action'    => 'required|string|max:255',
+        'comments'  => 'required|string',
+    ]);
+
+    $verification = Verification::findOrFail($id);
+    $verification->update($validated);
+
+    return redirect()->route('eligibility.create')
+                     ->with('showDashboard', true)
+                     ->with('success', 'Record updated successfully.');
+}
+
 }
